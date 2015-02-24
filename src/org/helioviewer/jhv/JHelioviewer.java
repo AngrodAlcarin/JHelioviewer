@@ -223,16 +223,16 @@ public class JHelioviewer {
 					if (arch.indexOf("64") != -1) {
 						directory += "64/";
 						//loadJNILibary(tmpLibDir, directory, "msvcr100.dll");
-						loadJNILibary(tmpLibDir, directory, "kdu_v63R.dll");
-						loadJNILibary(tmpLibDir, directory, "kdu_a63R.dll");
+						loadJNILibary(tmpLibDir, directory, "kdu_v75R.dll");
+						loadJNILibary(tmpLibDir, directory, "kdu_a75R.dll");
 						loadJNILibary(tmpLibDir, directory, "kdu_jni.dll");
 						loadExecuteLibary(tmpLibDir, directory,
 								"cgc-windows-x86-64.exe", "cgc");
 					} else if (arch.indexOf("86") != -1) {
 						directory += "32/";
 						//loadJNILibary(tmpLibDir, directory, "msvcr100.dll");
-						loadJNILibary(tmpLibDir, directory, "kdu_v63R.dll");
-						loadJNILibary(tmpLibDir, directory, "kdu_a63R.dll");
+						loadJNILibary(tmpLibDir, directory, "kdu_v75R.dll");
+						loadJNILibary(tmpLibDir, directory, "kdu_a75R.dll");
 						loadJNILibary(tmpLibDir, directory, "kdu_jni.dll");
 						loadExecuteLibary(tmpLibDir, directory,
 								"cgc-windows-x86-32.exe", "cgc");

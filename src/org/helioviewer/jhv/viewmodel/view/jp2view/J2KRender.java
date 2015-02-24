@@ -4,6 +4,7 @@ import kdu_jni.KduException;
 import kdu_jni.Kdu_compositor_buf;
 import kdu_jni.Kdu_coords;
 import kdu_jni.Kdu_dims;
+import kdu_jni.Kdu_ilayer_ref;
 import kdu_jni.Kdu_region_compositor;
 
 import org.helioviewer.jhv.base.math.Interval;
@@ -72,7 +73,7 @@ class J2KRender implements Runnable {
 	private int currentByteBuffer = 0;
 
 	/** Maximum of samples to process per rendering iteration */
-	private static final int MAX_RENDER_SAMPLES = 50000;
+	private static final int MAX_RENDER_SAMPLES = 500000;
 
 	/** Maximum rendering iterations per layer allowed */
 	// Is now calculated automatically as num_pix / MAX_RENDER_SAMPLES
@@ -213,19 +214,19 @@ class J2KRender implements Runnable {
 		try {
 			if (JP2Image.numJP2ImagesInUse() == 1) {
 				compositorRef.Set_thread_env(
-						JHV_Kdu_thread_env.getSingletonInstance(), 0);
+						JHV_Kdu_thread_env.getSingletonInstance(), null);
 			} else {
-				compositorRef.Set_thread_env(null, 0);
+				compositorRef.Set_thread_env(null, null);
 			}
 
 			compositorRef.Refresh();
-			compositorRef.Remove_compositing_layer(-1, true);
+			compositorRef.Remove_ilayer(new Kdu_ilayer_ref(), true);
 
 			parentImageRef.deactivateColorLookupTable(numLayer);
 
 			Kdu_dims dimsRef1 = new Kdu_dims(), dimsRef2 = new Kdu_dims();
 
-			compositorRef.Add_compositing_layer(numLayer, dimsRef1, dimsRef2);
+			compositorRef.Add_ilayer(numLayer, dimsRef1, dimsRef2);
 
 			if (lastCompositionLayerRendered != numLayer) {
 				lastCompositionLayerRendered = numLayer;

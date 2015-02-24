@@ -40,7 +40,7 @@ final public class JHV_Kdu_thread_env extends Kdu_thread_env {
             if (this.Get_num_threads() != processorCount) {
                 this.Destroy();
                 this.Create();
-                while (this.Get_num_threads() < processorCount && this.Add_thread(processorCount))
+                while (this.Get_num_threads() < processorCount && this.Add_thread())
                     ;
             }
 
